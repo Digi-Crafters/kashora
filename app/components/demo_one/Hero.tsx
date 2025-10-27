@@ -78,21 +78,21 @@ export default function KashoraHero() {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div 
-          className="grid min-h-screen items-center gap-12 lg:grid-cols-2"
+          className="grid min-h-screen items-center gap-8 lg:gap-12 lg:grid-cols-2"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* Left Content */}
           <motion.div 
-            className="flex flex-col justify-center space-y-8 py-20 lg:py-0"
+            className="flex flex-col justify-center space-y-6 sm:space-y-8 py-12 sm:py-16 lg:py-0"
             variants={itemVariants}
           >
             {/* Decorative Element */}
             <motion.div 
-              className="h-1 w-20 bg-gradient-to-r from-[#D4AF37] to-transparent"
+              className="h-1 w-16 sm:w-20 bg-gradient-to-r from-[#D4AF37] to-transparent"
               initial={{ width: 0 }}
               animate={{ width: 80 }}
               transition={{ delay: 0.5, duration: 1 }}
@@ -100,7 +100,7 @@ export default function KashoraHero() {
 
             {/* Headline */}
             <motion.h1
-              className="font-serif text-5xl font-bold leading-tight text-white md:text-6xl lg:text-7xl"
+              className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white"
               style={{ fontFamily: "Playfair Display, serif" }}
               variants={itemVariants}
             >
@@ -109,7 +109,7 @@ export default function KashoraHero() {
 
             {/* Subheading */}
             <motion.p
-              className="text-lg leading-relaxed text-white/90 md:text-xl lg:text-2xl max-w-2xl"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed text-white/90 max-w-2xl"
               style={{ fontFamily: "Poppins, sans-serif" }}
               variants={itemVariants}
             >
@@ -120,12 +120,12 @@ export default function KashoraHero() {
 
             {/* CTA Buttons */}
             <motion.div 
-              className="flex flex-col gap-4 sm:flex-row sm:gap-6"
+              className="flex flex-col gap-3 sm:gap-4 sm:flex-row sm:gap-6"
               variants={itemVariants}
             >
               <Link href="#collections">
                 <motion.button
-                  className="group relative overflow-hidden bg-[#D4AF37] px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-[#B8941F] hover:shadow-2xl hover:scale-105 rounded-lg"
+                  className="group relative overflow-hidden bg-[#D4AF37] px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white transition-all duration-300 hover:bg-[#B8941F] hover:shadow-2xl hover:scale-105 rounded-lg w-full sm:w-auto"
                   style={{ fontFamily: "Poppins, sans-serif" }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -136,7 +136,7 @@ export default function KashoraHero() {
               </Link>
               <Link href="#our-story">
                 <motion.button
-                  className="group border-2 border-white/80 bg-transparent px-8 py-4 text-lg font-semibold text-white transition-all duration-300 hover:bg-white hover:text-[#1C8076] hover:shadow-2xl hover:scale-105 rounded-lg"
+                  className="group border-2 border-white/80 bg-transparent px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white transition-all duration-300 hover:bg-white hover:text-[#1C8076] hover:shadow-2xl hover:scale-105 rounded-lg w-full sm:w-auto"
                   style={{ fontFamily: "Poppins, sans-serif" }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -149,11 +149,11 @@ export default function KashoraHero() {
 
           {/* Right Image - Animated Stack */}
           <motion.div 
-            className="relative flex items-center justify-center lg:justify-end py-20 lg:py-0"
+            className="relative flex items-center justify-center lg:justify-end py-12 sm:py-16 lg:py-0"
             variants={itemVariants}
           >
             {/* Main Container */}
-            <div className="relative w-full max-w-md h-[600px]">
+            <div className="relative w-full max-w-md h-[400px] sm:h-[500px] md:h-[600px]">
               
               {/* Background Images Stack */}
               {images.map((image, index) => (

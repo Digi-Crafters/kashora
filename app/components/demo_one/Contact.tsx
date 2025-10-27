@@ -39,20 +39,20 @@ const Contact = () => {
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-[#1C8076] via-[#2a9d8f] to-[#1c8076]">
-      <div className="relative z-10 container mx-auto px-6 py-24">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-24">
         <div className="max-w-4xl mx-auto">
           {/* Section Title */}
           <motion.div 
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className={`${playfair.className} text-4xl md:text-5xl font-bold text-white mb-4`}>
+            <h2 className={`${playfair.className} text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 px-4`}>
               Get in Touch
             </h2>
-            <div className="h-1 w-20 bg-gradient-to-r from-[#D4AF37] to-transparent mx-auto" />
-            <p className={`${poppins.className} text-white/90 mt-6 text-lg`}>
+            <div className="h-1 w-16 sm:w-20 bg-gradient-to-r from-[#D4AF37] to-transparent mx-auto" />
+            <p className={`${poppins.className} text-white/90 mt-4 sm:mt-6 text-base sm:text-lg px-4`}>
               We&apos;d love to hear from you. Send us a message below.
             </p>
           </motion.div>
@@ -60,13 +60,13 @@ const Contact = () => {
           {/* Contact Form */}
           <motion.form 
             onSubmit={handleSubmit}
-            className="space-y-6 bg-white/5 backdrop-blur-sm p-8 rounded-lg border border-[#D4AF37]/20"
+            className="space-y-4 sm:space-y-6 bg-white/5 backdrop-blur-sm p-6 sm:p-8 rounded-lg border border-[#D4AF37]/20"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div>
-              <label htmlFor="name" className={`${poppins.className} text-white block mb-2`}>
+              <label htmlFor="name" className={`${poppins.className} text-white block mb-2 text-sm sm:text-base`}>
                 Your Name
               </label>
               <input
@@ -121,9 +121,9 @@ const Contact = () => {
 
             <motion.button
               type="submit"
-              className="w-full px-8 py-4 bg-[#D4AF37] text-white font-semibold rounded-lg 
+              className="w-full px-6 sm:px-8 py-3 sm:py-4 bg-[#D4AF37] text-white font-semibold rounded-lg 
                        hover:bg-[#B8941F] hover:shadow-2xl hover:scale-105 
-                       transition-all duration-300 group relative overflow-hidden"
+                       transition-all duration-300 group relative overflow-hidden text-sm sm:text-base"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

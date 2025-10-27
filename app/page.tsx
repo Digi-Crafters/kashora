@@ -7,7 +7,7 @@ import Contact from "./components/demo_one/Contact";
 import Footer from "./components/demo_one/Footer";
 
 const page = () => {
-  return <div>
+  return <div className="overflow-x-hidden">
     <HeroSection/>
     <OurCraft/>
     <SignatureCollection/>

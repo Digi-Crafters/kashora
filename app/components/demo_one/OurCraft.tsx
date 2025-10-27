@@ -13,7 +13,7 @@ const OurCraft = () => {
     : data.crafts.filter(craft => craft.category === selectedCategory);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-[#E2C9AF]/30 via-white to-[#1C8076]/10 py-24 px-6">
+    <div className="relative min-h-screen bg-gradient-to-br from-[#E2C9AF]/30 via-white to-[#1C8076]/10 py-12 sm:py-16 md:py-24 px-4 sm:px-6 overflow-hidden">
       
       {/* Decorative Pattern Overlay */}
       <div className="absolute inset-0 opacity-5">
@@ -29,26 +29,26 @@ const OurCraft = () => {
       <div className="relative z-10 mx-auto max-w-7xl">
         
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className="inline-block mb-6">
-            <div className="h-1 w-24 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent"></div>
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
+          <div className="inline-block mb-4 sm:mb-6">
+            <div className="h-1 w-20 sm:w-24 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent"></div>
           </div>
-          <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-[#1C8076] mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#1C8076] mb-4 sm:mb-6 px-4" style={{ fontFamily: 'Playfair Display, serif' }}>
             Our Crafts
           </h2>
-          <p className="text-lg md:text-xl text-gray-700/90 max-w-3xl mx-auto leading-relaxed" style={{ fontFamily: 'Poppins, sans-serif' }}>
+          <p className="text-base sm:text-lg md:text-xl text-gray-700/90 max-w-3xl mx-auto leading-relaxed px-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
             Each piece is a testament to centuries-old traditions, handcrafted by skilled artisans who pour their heart and soul into every creation.
           </p>
         </div>
 
         {/* Category Filter */}
-        <div className="mb-16">
-          <div className="flex flex-wrap justify-center gap-4">
+        <div className="mb-12 sm:mb-16 px-4">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-8 py-3 font-semibold transition-all duration-500 border-2 ${
+                className={`px-4 sm:px-6 md:px-8 py-2 sm:py-3 text-sm sm:text-base font-semibold transition-all duration-500 border-2 ${
                   selectedCategory === category
                     ? 'bg-[#1C8076] text-white border-[#1C8076] shadow-xl scale-105'
                     : 'bg-white/80 backdrop-blur-sm text-[#1C8076] border-[#D4AF37]/30 hover:border-[#D4AF37] hover:bg-[#D4AF37]/5'
@@ -62,14 +62,14 @@ const OurCraft = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 px-4">
           {filteredCrafts.map((craft) => (
             <div
               key={craft.id}
               className="group relative bg-white/60 backdrop-blur-sm overflow-hidden transition-all duration-700 hover:bg-white hover:shadow-2xl"
             >
               {/* Image Container */}
-              <div className="relative h-80 overflow-hidden">
+              <div className="relative h-64 sm:h-72 md:h-80 overflow-hidden">
                 <img
                   src={craft.image}
                   alt={craft.name}
@@ -93,12 +93,12 @@ const OurCraft = () => {
               </div>
 
               {/* Product Info */}
-              <div className="p-8">
-                <h3 className="font-serif text-2xl font-bold text-[#1C8076] mb-3 group-hover:text-[#D4AF37] transition-colors duration-300" style={{ fontFamily: 'Playfair Display, serif' }}>
+              <div className="p-4 sm:p-6 md:p-8">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#1C8076] mb-3 group-hover:text-[#D4AF37] transition-colors duration-300" style={{ fontFamily: 'Playfair Display, serif' }}>
                   {craft.name}
                 </h3>
 
-                <p className="text-gray-600 mb-6 leading-relaxed line-clamp-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed line-clamp-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   {craft.description}
                 </p>
 

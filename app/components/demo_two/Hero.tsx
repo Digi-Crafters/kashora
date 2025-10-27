@@ -1,240 +1,171 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
+import { Playfair_Display, Cormorant_Garamond } from 'next/font/google';
 import Image from 'next/image';
 
-const KashoraHero: React.FC = () => {
-  const [mounted, setMounted] = useState(false);
+const playfair = Playfair_Display({ 
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['400', '500', '600', '700']
+});
 
-  useEffect(() => {
-    const raf = requestAnimationFrame(() => setMounted(true));
-    return () => cancelAnimationFrame(raf);
-  }, []);
+const cormorant = Cormorant_Garamond({
+  weight: ['300', '400', '500', '600'],
+  subsets: ['latin']
+});
 
-  if (!mounted) return null;
-
+const Hero = () => {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#1e154d] via-[#7d3247] to-[#e57040]">
-      {/* Animated background patterns */}
-      <div className="absolute inset-0 opacity-25">
+    <div className={`${playfair.className} min-h-screen relative overflow-hidden flex items-center justify-center bg-[#F5F5DC]`}>
+      {/* Background decorative elements */}
+      <div className="absolute inset-0">
         <motion.div
-          className="absolute top-32 left-16 w-96 h-96 rounded-full bg-[#b25b37] blur-3xl"
-          animate={{
-            scale: [1, 1.15, 1],
-            x: [0, 30, 0],
-            y: [0, 24, 0],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.05 }}
+          transition={{ duration: 1.5 }}
+          className="absolute top-20 left-10 w-64 h-64 bg-[#b76e79] rounded-full blur-3xl"
         />
         <motion.div
-          className="absolute bottom-16 right-20 w-96 h-96 rounded-full bg-[#5f2781] blur-3xl"
-          animate={{
-            scale: [1, 1.22, 1],
-            x: [0, -35, 0],
-            y: [0, -22, 0],
-          }}
-          transition={{
-            duration: 13,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.05 }}
+          transition={{ duration: 1.5, delay: 0.3 }}
+          className="absolute bottom-20 right-10 w-80 h-80 bg-[#d4af37] rounded-full blur-3xl"
         />
       </div>
-
-      {/* Main content container */}
-      <div className="relative z-10 container mx-auto px-6 py-20 lg:py-0 min-h-screen flex items-center">
-        <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
-          {/* Left side - Text content */}
+      
+      <div className="relative z-10 flex flex-col items-center justify-center w-full px-4 sm:px-6 py-12">
+        {/* Main content container */}
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 max-w-7xl mx-auto">
+          
+          {/* Left side - Image oval */}
           <motion.div
-            initial={{ opacity: 0, x: -55 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.15 }}
-            className="space-y-8"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="relative w-72 h-96 sm:w-80 sm:h-[28rem] md:w-96 md:h-[32rem]"
           >
-            {/* Logo/Brand */}
+            {/* Decorative border */}
+            <div className="absolute inset-0 rounded-[50%] border-4 border-[#8B4513]/30 transform rotate-3" />
+            <div className="absolute inset-0 rounded-[50%] border-4 border-[#A0522D]/20 transform -rotate-3" />
+            
+            {/* Main oval with image */}
+            <div className="absolute inset-2 rounded-[50%] overflow-hidden bg-white shadow-2xl">
+              <div className="relative w-full h-full">
+                <Image
+                  src="https://imgs.search.brave.com/ZVCNShKk0ml38uDLRbgJ5eoSY_oDBmlM-rLYLFv1wVM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/YmFuYXJhc2VlLmlu/L2Nkbi9zaG9wL2Zp/bGVzL0lNR185MDcx/XzYwMHguanBnP3Y9/MTcyNTAwNjQ0NA"
+                  alt="Kashmiri Craftsmanship"
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 768px) 320px, 400px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              </div>
+            </div>
+
+            {/* Floating badge */}
             <motion.div
-              initial={{ opacity: 0, y: -28 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="absolute -bottom-6 -right-6 bg-[#8B4513] text-white rounded-full w-24 h-24 flex flex-col items-center justify-center shadow-xl"
             >
-              <h1 className="text-7xl lg:text-8xl font-bold text-[#f7e4d1] drop-shadow-xl tracking-tight">
-                Kashora
+              <span className="text-xs font-semibold">EST.</span>
+              <span className="text-2xl font-bold">2024</span>
+            </motion.div>
+          </motion.div>
+
+          {/* Right side - Text content */}
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left max-w-xl">
+            {/* Main heading */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="mb-6"
+            >
+              <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-[#2c1810] tracking-tight leading-none">
+                KASHORA
               </h1>
               <motion.div
-                className="h-1 w-32 bg-[#d6ad60] mt-4 rounded-full"
                 initial={{ width: 0 }}
-                animate={{ width: 128 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                animate={{ width: '100%' }}
+                transition={{ duration: 1, delay: 0.8 }}
+                className="h-1 bg-gradient-to-r from-[#8B4513] via-[#A0522D] to-transparent mt-4"
               />
             </motion.div>
+
             {/* Tagline */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="space-y-4"
+              className={`${cormorant.className} text-2xl sm:text-3xl md:text-4xl font-light italic text-[#3d2817] mb-8 leading-relaxed`}
             >
-              <p className="text-2xl lg:text-3xl text-[#d6ad60] font-light italic tracking-wide">
-                Evening Splendor of Kashmir
-              </p>
-              <p className="text-lg text-[#f7e4d1]/80 max-w-lg leading-relaxed">
-                Discover the mystical allure of Kashmir’s crafts at dusk—where heritage glimmers against shadows of twilight.
-              </p>
-            </motion.div>
+              Where heritage meets contemporary elegance
+            </motion.p>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="text-base sm:text-lg text-[#5c4033] mb-10 leading-relaxed max-w-lg"
+            >
+              Discover the timeless artistry of Kashmir through our curated collection 
+              of handcrafted treasures, each piece telling a story of tradition and excellence.
+            </motion.p>
+
             {/* CTA Buttons */}
             <motion.div
-              initial={{ opacity: 0, y: 22 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.85 }}
-              className="flex flex-wrap gap-4"
+              transition={{ duration: 0.8, delay: 1.2 }}
+              className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
             >
               <motion.button
-                whileHover={{ scale: 1.08, boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}
-                whileTap={{ scale: 0.97 }}
-                className="px-8 py-4 bg-[#d6ad60] text-[#31204a] rounded-full font-semibold text-lg shadow-2xl hover:bg-[#c78641] hover:text-white transition-colors duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-[#8B4513] text-white font-semibold rounded-full hover:bg-[#6d3410] transition-colors shadow-lg"
               >
                 Explore Collection
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.06 }}
-                whileTap={{ scale: 0.97 }}
-                className="px-8 py-4 bg-transparent border-2 border-[#d6ad60] text-[#f7e4d1] rounded-full font-semibold text-lg hover:bg-[#372956]/40 transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 border-2 border-[#8B4513] text-[#8B4513] font-semibold rounded-full hover:bg-[#8B4513] hover:text-white transition-all"
               >
                 Our Story
               </motion.button>
             </motion.div>
-            {/* Decorative elements */}
+
+            {/* Stats */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 1.1 }}
-              className="flex gap-8 pt-8 items-center"
+              transition={{ duration: 0.8, delay: 1.5 }}
+              className="flex gap-8 mt-12 pt-8 border-t border-[#8B4513]/20"
             >
-              <div className="text-[#f7e4d1]/80">
-                <div className="text-3xl font-bold">500+</div>
-                <div className="text-sm">Handcrafted Items</div>
+              <div className="text-center lg:text-left">
+                <div className="text-3xl font-bold text-[#8B4513]">500+</div>
+                <div className="text-sm text-[#5c4033]">Handcrafted Items</div>
               </div>
-              <div className="h-12 w-px bg-[#f7e4d1]/30" />
-              <div className="text-[#f7e4d1]/80">
-                <div className="text-3xl font-bold">100%</div>
-                <div className="text-sm">Authentic Kashmir</div>
+              <div className="text-center lg:text-left">
+                <div className="text-3xl font-bold text-[#A0522D]">100%</div>
+                <div className="text-sm text-[#5c4033]">Authentic</div>
               </div>
-            </motion.div>
-          </motion.div>
-          {/* Right side - Image showcase */}
-          <motion.div
-            initial={{ opacity: 0, x: 55 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.45 }}
-            className="relative h-[600px] lg:h-[700px]"
-          >
-            {/* Main showcase image */}
-            <motion.div
-              className="absolute top-0 right-0 w-4/5 h-3/5 rounded-3xl overflow-hidden shadow-2xl"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="relative w-full h-full bg-[#30284a]">
-                <Image
-                  src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?w=800&q=80"
-                  alt="Kashmir Pashmina Shawl"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1e154d]/70 to-transparent" />
+              <div className="text-center lg:text-left">
+                <div className="text-3xl font-bold text-[#8B4513]">50+</div>
+                <div className="text-sm text-[#5c4033]">Artisans</div>
               </div>
             </motion.div>
-            {/* Secondary image - bottom left */}
-            <motion.div
-              className="absolute bottom-0 left-0 w-3/5 h-2/5 rounded-3xl overflow-hidden shadow-2xl"
-              initial={{ opacity: 0, y: 55 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.9 }}
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="relative w-full h-full bg-[#b25b37]">
-                <Image
-                  src="https://images.unsplash.com/photo-1580782274062-e60d2bf52a85?w=800&q=80"
-                  alt="Kashmir Handicrafts"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#7d3247]/50 to-transparent" />
-              </div>
-            </motion.div>
-            {/* Floating badge */}
-            <motion.div
-              className="absolute top-20 left-10 bg-[#d6ad60] rounded-2xl p-6 shadow-xl"
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.65, delay: 1.25 }}
-              whileHover={{ y: -6 }}
-            >
-              <div className="text-[#31204a] font-bold text-xl">✨ New</div>
-              <div className="text-[#b25b37] text-sm">Collection 2025</div>
-            </motion.div>
-            {/* Decorative circles */}
-            <motion.div
-              className="absolute -top-12 -right-12 w-32 h-32 rounded-full border-4 border-[#f7e4d1]/30"
-              animate={{
-                rotate: 360,
-                scale: [1, 1.14, 1]
-              }}
-              transition={{
-                rotate: { duration: 18, repeat: Infinity, ease: "linear" },
-                scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-              }}
-            />
-            <motion.div
-              className="absolute -bottom-12 -left-12 w-24 h-24 rounded-full border-4 border-[#b25b37]/25"
-              animate={{
-                rotate: -360,
-                scale: [1, 1.22, 1]
-              }}
-              transition={{
-                rotate: { duration: 13, repeat: Infinity, ease: "linear" },
-                scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
-              }}
-            />
-          </motion.div>
+          </div>
         </div>
       </div>
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.65 }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
-      >
-        <motion.div
-          animate={{ y: [0, 13, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="text-[#f7e4d1]/70 flex flex-col items-center gap-2"
-        >
-          <span className="text-sm">Scroll to explore</span>
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
-        </motion.div>
-      </motion.div>
     </div>
   );
 };
 
-export default KashoraHero;
+export default Hero;

@@ -46,35 +46,35 @@ const footerLinks = {
 const Footer = () => {
   return (
     <footer className="relative overflow-hidden bg-[#1C8076]">
-      <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Newsletter Section */}
         <motion.div 
-          className="mb-16 text-center"
+          className="mb-12 sm:mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className={`${playfair.className} text-3xl font-bold text-white mb-4`}>
+          <h2 className={`${playfair.className} text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4 px-4`}>
             Join Our Newsletter
           </h2>
-          <p className={`${poppins.className} text-white/90 mb-6`}>
+          <p className={`${poppins.className} text-white/90 mb-4 sm:mb-6 text-sm sm:text-base px-4`}>
             Stay updated with our latest collections and artisanal stories
           </p>
-          <form className="mx-auto flex max-w-md gap-x-4">
+          <form className="mx-auto flex flex-col sm:flex-row max-w-md gap-3 sm:gap-x-4 px-4">
             <input
               type="email"
               placeholder="Enter your email"
               className={`${poppins.className} min-w-0 flex-auto rounded-lg border 
-                       border-[#D4AF37]/20 bg-white/10 px-4 py-3 text-white 
+                       border-[#D4AF37]/20 bg-white/10 px-4 py-2 sm:py-3 text-white text-sm sm:text-base
                        placeholder-white/50 focus:outline-none focus:border-[#D4AF37]/50
                        transition-all duration-300`}
             />
             <motion.button
               type="submit"
-              className="group relative overflow-hidden bg-[#D4AF37] px-6 py-3 
+              className="group relative overflow-hidden bg-[#D4AF37] px-4 sm:px-6 py-2 sm:py-3 
                        text-white font-semibold rounded-lg hover:bg-[#B8941F]
-                       transition-all duration-300"
+                       transition-all duration-300 text-sm sm:text-base whitespace-nowrap"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -87,19 +87,19 @@ const Footer = () => {
         </motion.div>
 
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6 text-center sm:text-left">
             <Link href="/" className="block">
-              <h1 className={`${playfair.className} text-3xl font-bold text-white`}>
+              <h1 className={`${playfair.className} text-2xl sm:text-3xl font-bold text-white`}>
                 KASHORA
               </h1>
             </Link>
-            <p className={`${poppins.className} text-white/80 text-sm max-w-xs`}>
+            <p className={`${poppins.className} text-white/80 text-xs sm:text-sm max-w-xs mx-auto sm:mx-0`}>
               Crafting timeless pieces that blend traditional Kashmiri artistry with contemporary elegance.
             </p>
             {/* Social Links */}
-            <div className="flex space-x-4">
+            <div className="flex space-x-3 sm:space-x-4 justify-center sm:justify-start">
               {footerLinks.social.map((item) => (
                 <Link 
                   key={item.name}
@@ -127,9 +127,9 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h3 className={`${playfair.className} text-lg font-semibold text-white mb-6`}>Collections</h3>
-            <ul className={`${poppins.className} space-y-4`}>
+          <div className="text-center sm:text-left">
+            <h3 className={`${playfair.className} text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6`}>Collections</h3>
+            <ul className={`${poppins.className} space-y-3 sm:space-y-4 text-sm`}>
               {footerLinks.collections.map((item) => (
                 <li key={item.name}>
                   <Link href={item.href} className="text-white/80 hover:text-[#D4AF37] transition-colors duration-300">
@@ -140,9 +140,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
-            <h3 className={`${playfair.className} text-lg font-semibold text-white mb-6`}>About</h3>
-            <ul className={`${poppins.className} space-y-4`}>
+          <div className="text-center sm:text-left">
+            <h3 className={`${playfair.className} text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6`}>About</h3>
+            <ul className={`${poppins.className} space-y-3 sm:space-y-4 text-sm`}>
               {footerLinks.about.map((item) => (
                 <li key={item.name}>
                   <Link href={item.href} className="text-white/80 hover:text-[#D4AF37] transition-colors duration-300">
@@ -153,9 +153,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
-            <h3 className={`${playfair.className} text-lg font-semibold text-white mb-6`}>Support</h3>
-            <ul className={`${poppins.className} space-y-4`}>
+          <div className="text-center sm:text-left">
+            <h3 className={`${playfair.className} text-base sm:text-lg font-semibold text-white mb-4 sm:mb-6`}>Support</h3>
+            <ul className={`${poppins.className} space-y-3 sm:space-y-4 text-sm`}>
               {footerLinks.support.map((item) => (
                 <li key={item.name}>
                   <Link href={item.href} className="text-white/80 hover:text-[#D4AF37] transition-colors duration-300">
@@ -168,13 +168,13 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-16 pt-8 border-t border-white/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className={`${poppins.className} text-white/60 text-sm`}>
+        <div className="mt-12 sm:mt-16 pt-6 sm:pt-8 border-t border-white/10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4">
+            <p className={`${poppins.className} text-white/60 text-xs sm:text-sm text-center`}>
               © 2025 Kashora. All rights reserved.
             </p>
-            <div className="flex gap-6">
-              <Link href="#" className={`${poppins.className} text-white/60 text-sm hover:text-[#D4AF37] transition-colors duration-300`}>
+            <div className="flex gap-4 sm:gap-6">
+              <Link href="#" className={`${poppins.className} text-white/60 text-xs sm:text-sm hover:text-[#D4AF37] transition-colors duration-300`}>
                 Privacy Policy
               </Link>
               <Link href="#" className={`${poppins.className} text-white/60 text-sm hover:text-[#D4AF37] transition-colors duration-300`}>
